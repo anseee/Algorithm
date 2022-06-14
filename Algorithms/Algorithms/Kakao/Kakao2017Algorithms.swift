@@ -15,7 +15,7 @@ struct Kakao2017Algorithms {
             let arr1Value = arr1[i]
             let arr2Value = arr2[i]
             var result = String(arr1Value | arr2Value, radix: 2)
-            result = result.replacingOccurrences(of: "0", with: "+")
+            result = result.replacingOccurrences(of: "0", with: " ")
             result = result.replacingOccurrences(of: "1", with: "#")
             results.append(result)
         }

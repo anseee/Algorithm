@@ -13,7 +13,7 @@ class Kakao2017AlgorithmsTests: XCTestCase {
         let n = 5
         let arr1 = [9, 20, 28, 18, 11]
         let arr2 = [30, 1, 21, 17, 28]
-        let expectResult = ["#####","# # #", "### #", "# ##", "#####"]
+        let expectResult = ["#####","# # #", "### #", "#  ##", "#####"]
         
         XCTAssert(1 <= n && n <= 16)
         XCTAssertEqual(n, arr1.count, "arr1은 길이 n인 정수 배열로 주어진다.")
