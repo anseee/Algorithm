@@ -22,4 +22,27 @@ struct Kakao2017Algorithms {
 
         return results
     }
+    
+    static func dartGame(dartResult: String) -> Int {
+        return 37
+    }
+    
+    @discardableResult
+    static func matches(regex: String, in text: String) -> [String]? {
+        do {
+            let regex = try NSRegularExpression(pattern: regex)
+            let results = regex.matches(in: text,
+                                        range: NSRange(text.startIndex..., in: text))
+            
+            if results.isEmpty {
+                return nil
+            }
+            return results.map {
+                String(text[Range($0.range, in: text)!])
+            }
+        } catch let error {
+            print("invalid regex: \(error.localizedDescription)")
+            return []
+        }
+    }
 }
