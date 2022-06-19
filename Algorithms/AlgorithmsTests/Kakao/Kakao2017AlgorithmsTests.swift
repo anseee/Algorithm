@@ -29,13 +29,13 @@ class Kakao2017AlgorithmsTests: XCTestCase {
     }
 
     func testDartGame() throws {
-        let dartResult = "1S2D*10T"
-        let expectResult = 37
+        let dartResult = "1D2S3T*"
+        let expectResult = 59
         
         Kakao2017Algorithms.matches(regex: "[0-9]{1,2}", in: dartResult)!
             .forEach {
                 if let number = Int($0) {
-                    XCTAssert(1 <= number && number <= 10, "점수는 1~10 사이 값입니다. 문제값 : \(number)")
+                    XCTAssert(0 <= number && number <= 10, "점수는 0~10 사이 값입니다. 문제값 : \(number)")
                 } else {
                     XCTAssertFalse(false, "점수가 포함 되어있지 않습니다.")
                 }
@@ -44,7 +44,6 @@ class Kakao2017AlgorithmsTests: XCTestCase {
         XCTAssertNil(Kakao2017Algorithms.matches(regex: "[^SDT*#0-9]", in: dartResult), "조건에 맞지 않는 보너스 또는 옵션이 있습니다.")
 
         let result = Kakao2017Algorithms.dartGame(dartResult: dartResult)
-        
         XCTAssert(result == expectResult, "기대값과 다릅니다. 알고리즘 결과값: \(result)")
     }
     
@@ -54,6 +53,4 @@ class Kakao2017AlgorithmsTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-    
-
 }

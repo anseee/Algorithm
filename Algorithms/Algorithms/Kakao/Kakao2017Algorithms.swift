@@ -24,7 +24,32 @@ struct Kakao2017Algorithms {
     }
     
     static func dartGame(dartResult: String) -> Int {
-        return 37
+        var score: [Int] = []
+        var n = ""
+        
+        Array(dartResult).forEach {
+            if let _ = Int(String($0)) {
+                n += String($0)
+            } else if $0 == "S", let i = Float(n) {
+                score.append(Int(pow(i, 1)))
+                n = ""
+            } else if $0 == "D", let i = Float(n) {
+                score.append(Int(pow(i, 2)))
+                n = ""
+            } else if $0 == "T", let i = Float(n) {
+                score.append(Int(pow(i, 3)))
+                n = ""
+            } else if $0 == "*" {
+                if score.count > 1 {
+                    score[score.index(before: score.endIndex) - 1] *= 2
+                }
+                score[score.index(before: score.endIndex)] *= 2    
+            } else if $0 == "#" {
+                score[score.index(before: score.endIndex)] *= -1
+            }
+        }
+
+        return score.reduce(0, +)
     }
     
     @discardableResult
