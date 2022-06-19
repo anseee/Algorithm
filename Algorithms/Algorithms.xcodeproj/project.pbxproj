@@ -13,11 +13,12 @@
 		D7E2378F2858E82100EDB94F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7E2378D2858E82100EDB94F /* Main.storyboard */; };
 		D7E237912858E82300EDB94F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7E237902858E82300EDB94F /* Assets.xcassets */; };
 		D7E237942858E82300EDB94F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7E237922858E82300EDB94F /* LaunchScreen.storyboard */; };
-		D7E2379F2858E82300EDB94F /* AlgorithmsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E2379E2858E82300EDB94F /* AlgorithmsTests.swift */; };
 		D7E237A92858E82300EDB94F /* AlgorithmsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E237A82858E82300EDB94F /* AlgorithmsUITests.swift */; };
 		D7E237AB2858E82300EDB94F /* AlgorithmsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E237AA2858E82300EDB94F /* AlgorithmsUITestsLaunchTests.swift */; };
 		D7E237BA2858E88400EDB94F /* Kakao2017Algorithms.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E237B92858E88400EDB94F /* Kakao2017Algorithms.swift */; };
 		D7E237BD2858E8AE00EDB94F /* Kakao2017AlgorithmsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E237BC2858E8AE00EDB94F /* Kakao2017AlgorithmsTests.swift */; };
+		D7E237C0285F65D000EDB94F /* LRUCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E237BF285F65D000EDB94F /* LRUCache.swift */; };
+		D7E237C2285F663F00EDB94F /* String+Matches.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E237C1285F663F00EDB94F /* String+Matches.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,12 +48,13 @@
 		D7E237932858E82300EDB94F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D7E237952858E82300EDB94F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D7E2379A2858E82300EDB94F /* AlgorithmsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlgorithmsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D7E2379E2858E82300EDB94F /* AlgorithmsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmsTests.swift; sourceTree = "<group>"; };
 		D7E237A42858E82300EDB94F /* AlgorithmsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlgorithmsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7E237A82858E82300EDB94F /* AlgorithmsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmsUITests.swift; sourceTree = "<group>"; };
 		D7E237AA2858E82300EDB94F /* AlgorithmsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D7E237B92858E88400EDB94F /* Kakao2017Algorithms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kakao2017Algorithms.swift; sourceTree = "<group>"; };
 		D7E237BC2858E8AE00EDB94F /* Kakao2017AlgorithmsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kakao2017AlgorithmsTests.swift; sourceTree = "<group>"; };
+		D7E237BF285F65D000EDB94F /* LRUCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LRUCache.swift; sourceTree = "<group>"; };
+		D7E237C1285F663F00EDB94F /* String+Matches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Matches.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,8 +120,7 @@
 		D7E2379D2858E82300EDB94F /* AlgorithmsTests */ = {
 			isa = PBXGroup;
 			children = (
-				D7E237BB2858E89B00EDB94F /* Kakao */,
-				D7E2379E2858E82300EDB94F /* AlgorithmsTests.swift */,
+				D7E237BC2858E8AE00EDB94F /* Kakao2017AlgorithmsTests.swift */,
 			);
 			path = AlgorithmsTests;
 			sourceTree = "<group>";
@@ -136,17 +137,19 @@
 		D7E237B72858E82C00EDB94F /* Kakao */ = {
 			isa = PBXGroup;
 			children = (
-				D7E237B92858E88400EDB94F /* Kakao2017Algorithms.swift */,
+				D7E237BE285F65C600EDB94F /* 2017 */,
 			);
 			path = Kakao;
 			sourceTree = "<group>";
 		};
-		D7E237BB2858E89B00EDB94F /* Kakao */ = {
+		D7E237BE285F65C600EDB94F /* 2017 */ = {
 			isa = PBXGroup;
 			children = (
-				D7E237BC2858E8AE00EDB94F /* Kakao2017AlgorithmsTests.swift */,
+				D7E237BF285F65D000EDB94F /* LRUCache.swift */,
+				D7E237C1285F663F00EDB94F /* String+Matches.swift */,
+				D7E237B92858E88400EDB94F /* Kakao2017Algorithms.swift */,
 			);
-			path = Kakao;
+			path = 2017;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,6 +286,8 @@
 				D7E2378C2858E82100EDB94F /* ViewController.swift in Sources */,
 				D7E237882858E82100EDB94F /* AppDelegate.swift in Sources */,
 				D7E2378A2858E82100EDB94F /* SceneDelegate.swift in Sources */,
+				D7E237C0285F65D000EDB94F /* LRUCache.swift in Sources */,
+				D7E237C2285F663F00EDB94F /* String+Matches.swift in Sources */,
 				D7E237BA2858E88400EDB94F /* Kakao2017Algorithms.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -291,7 +296,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7E2379F2858E82300EDB94F /* AlgorithmsTests.swift in Sources */,
 				D7E237BD2858E8AE00EDB94F /* Kakao2017AlgorithmsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

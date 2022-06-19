@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 struct Kakao2017Algorithms {
     static func secretMap(n: Int, arr1: [Int], arr2: [Int]) -> [String] {
         var results: [String] = []
@@ -40,9 +41,7 @@ struct Kakao2017Algorithms {
                 score.append(Int(pow(i, 3)))
                 n = ""
             } else if $0 == "*" {
-                if score.count > 1 {
-                    score[score.index(before: score.endIndex) - 1] *= 2
-                }
+                if score.count > 1 { score[score.index(before: score.endIndex) - 1] *= 2 }
                 score[score.index(before: score.endIndex)] *= 2    
             } else if $0 == "#" {
                 score[score.index(before: score.endIndex)] *= -1
@@ -52,22 +51,8 @@ struct Kakao2017Algorithms {
         return score.reduce(0, +)
     }
     
-    @discardableResult
-    static func matches(regex: String, in text: String) -> [String]? {
-        do {
-            let regex = try NSRegularExpression(pattern: regex)
-            let results = regex.matches(in: text,
-                                        range: NSRange(text.startIndex..., in: text))
-            
-            if results.isEmpty {
-                return nil
-            }
-            return results.map {
-                String(text[Range($0.range, in: text)!])
-            }
-        } catch let error {
-            print("invalid regex: \(error.localizedDescription)")
-            return []
-        }
+    static func cache(cacheSize: Int, cities: [String]) -> Int {
+        let lruCache = LRUCache(cacheSize)
+        return 50
     }
 }

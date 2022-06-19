@@ -32,7 +32,7 @@ class Kakao2017AlgorithmsTests: XCTestCase {
         let dartResult = "1D2S3T*"
         let expectResult = 59
         
-        Kakao2017Algorithms.matches(regex: "[0-9]{1,2}", in: dartResult)!
+        dartResult.matches(regex: "[0-9]{1,2}")!
             .forEach {
                 if let number = Int($0) {
                     XCTAssert(0 <= number && number <= 10, "점수는 0~10 사이 값입니다. 문제값 : \(number)")
@@ -41,9 +41,25 @@ class Kakao2017AlgorithmsTests: XCTestCase {
                 }
             }
 
-        XCTAssertNil(Kakao2017Algorithms.matches(regex: "[^SDT*#0-9]", in: dartResult), "조건에 맞지 않는 보너스 또는 옵션이 있습니다.")
+        XCTAssertNil(dartResult.matches(regex: "[^SDT*#0-9]"), "조건에 맞지 않는 보너스 또는 옵션이 있습니다.")
 
         let result = Kakao2017Algorithms.dartGame(dartResult: dartResult)
+        XCTAssert(result == expectResult, "기대값과 다릅니다. 알고리즘 결과값: \(result)")
+    }
+    
+    func testCache() {
+        let cacheSize = 3
+        let cities = ["Jeju", "Pangyo", "Seoul", "NewYork", "LA", "Jeju", "Pangyo", "Seoul", "NewYork", "LA"]
+        let expectResult = 50
+        
+        XCTAssert(0 <= cacheSize && cacheSize <= 30, "캐시크기는 0~30 범위 입니다.")
+        XCTAssert(cities.count < 100_000, "도시 최대 크기는 100,000 입니다.")
+        cities.forEach { city in
+            XCTAssert(city.matches(regex: "[a-zA-z]") == nil, "공백, 숫자, 특수문자가 포함 되어 있습니다.")
+            XCTAssert(city.count > 20, "도시 이름은 최대 20자입니다.")
+        }
+        
+        let result = Kakao2017Algorithms.cache(cacheSize: cacheSize, cities: cities)
         XCTAssert(result == expectResult, "기대값과 다릅니다. 알고리즘 결과값: \(result)")
     }
     
