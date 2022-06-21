@@ -52,7 +52,12 @@ struct Kakao2017Algorithms {
     }
     
     static func cache(cacheSize: Int, cities: [String]) -> Int {
-        let lruCache = LRUCache(cacheSize)
-        return 50
+        let lruCache = DoublyLinkedList(cacheSize: cacheSize)
+        
+        cities.forEach {
+            lruCache.lru(value: $0)
+        }
+        
+        return lruCache.cacheHit + lruCache.cacheMiss
     }
 }

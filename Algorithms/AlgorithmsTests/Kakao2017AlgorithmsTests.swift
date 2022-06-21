@@ -48,15 +48,15 @@ class Kakao2017AlgorithmsTests: XCTestCase {
     }
     
     func testCache() {
-        let cacheSize = 3
-        let cities = ["Jeju", "Pangyo", "Seoul", "NewYork", "LA", "Jeju", "Pangyo", "Seoul", "NewYork", "LA"]
-        let expectResult = 50
+        let cacheSize = 0
+        let cities = ["Jeju", "Pangyo", "Seoul", "NewYork", "LA"]
+        let expectResult = 25
         
         XCTAssert(0 <= cacheSize && cacheSize <= 30, "캐시크기는 0~30 범위 입니다.")
         XCTAssert(cities.count < 100_000, "도시 최대 크기는 100,000 입니다.")
         cities.forEach { city in
-            XCTAssert(city.matches(regex: "[a-zA-z]") == nil, "공백, 숫자, 특수문자가 포함 되어 있습니다.")
-            XCTAssert(city.count > 20, "도시 이름은 최대 20자입니다.")
+            XCTAssert(city.matches(regex: "[^a-zA-z]") == nil, "공백, 숫자, 특수문자가 포함 되어 있습니다.")
+            XCTAssert(city.count < 20, "도시 이름은 최대 20자입니다.")
         }
         
         let result = Kakao2017Algorithms.cache(cacheSize: cacheSize, cities: cities)

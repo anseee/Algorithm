@@ -7,87 +7,85 @@
 
 import Foundation
 
-class LRUCache {
-    class Node {
-        var prev, next: Node?
-        var key, value: Int
-        
-        init(key: Int, value: Int) {
-            self.key = key
-            self.value = value
+class Node {
+    var value: String
+    var prev: Node?
+    var next: Node?
+    init(value: String, prev: Node? = nil, next: Node? = nil) {
+        self.value = value
+        self.prev = prev
+        self.next = next
+    }
+}
+
+class DoublyLinkedList {
+    var cacheSize: Int
+    var head: Node
+    var tail: Node
+    
+    var cacheHit = 0
+    var cacheMiss = 0
+    
+    init(cacheSize: Int) {
+        self.cacheSize = cacheSize
+        self.head = Node(value: "")
+        self.tail = Node(value: "")
+        self.head.next = self.tail
+        self.tail.prev = self.head
+    }
+    
+    func lru(value: String) {
+        var node = head.next
+        while node?.value != nil {
+            if let node = node, node.value == value {
+                cacheHit(node:node, value:value)
+                return
+            }
+            node = node?.next
+        }
+        cacheMiss(value: value)
+    }
+    
+    func cacheHit(node: Node, value: String) {
+        cacheHit += 1
+        removeNode(node: node)
+        addFront(value: value)
+    }
+    
+    func cacheMiss(value: String) {
+        cacheMiss += 5
+        addFront(value: value)
+        if totalLen() > cacheSize {
+            removeTail()
         }
     }
     
-    private let capacity: Int
-    private var currentSize: Int
-    private var hashMap: [Int: Node] = [:]
-    private let head, tail : Node?
-    
-    init(_ capacity: Int) {
-        self.capacity = capacity
-        self.currentSize = 0
-        self.head = Node(key: -1, value: -1)
-        self.tail = Node(key: -1, value: -1)
-        head?.next = tail
-        tail?.prev = head
+    func addFront(value: String) {
+        let newNode = Node(value: value)
+        head.next?.prev = newNode
+        newNode.next = head.next
+        head.next = newNode
+        newNode.prev = head
     }
     
-    func get(_ key: Int) -> Int {
-        printCache()
+    func totalLen() -> Int {
+        var answer = 0
+        var node = head.next
         
-        if hashMap[key] == nil {
-            return -1
+        while node?.value != nil {
+            answer += 1
+            node = node?.next
         }
-        
-        //update queue
-        remove(node: hashMap[key])
-        add(node: hashMap[key])
-        
-        return hashMap[key]!.value
+        return answer
     }
     
-    func put(_ key: Int, _ value: Int) {
-        printCache()
-        let newNode = Node(key: key, value: value)
-        
-        if hashMap[key] == nil {
-            hashMap[key] = newNode
-            add(node: newNode)
-            currentSize += 1
-        } else {
-            remove(node: hashMap[key])
-            hashMap[key] = newNode
-            add(node: newNode)
-        }
-        
-        if capacity < currentSize {
-            hashMap.removeValue(forKey: tail!.prev!.key)
-            remove(node: tail?.prev)
-            currentSize -= 1
-        }
+    func removeNode(node: Node) {
+        node.prev?.next = node.next
+        node.next?.prev = node.prev
     }
     
-    private func add(node: Node?) {
-        // head node head.next
-        let next = head?.next
-        head?.next = node
-        node?.prev = head
-        node?.next = next
-        next?.prev = node
-    }
-    
-    private func remove(node: Node?) {
-        // node.prev node node.next
-        node?.prev?.next = node?.next
-        node?.next?.prev = node?.prev
-    }
-    
-    private func printCache() {
-        var curr = head
-        while curr != nil {
-            print(curr!.value, terminator: " ")
-            curr = curr?.next
-        }
-        print("\n-----")
+    func removeTail() {
+        tail.prev?.prev?.next = tail
+        tail.prev = tail.prev?.prev
     }
 }
